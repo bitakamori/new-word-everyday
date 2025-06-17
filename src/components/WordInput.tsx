@@ -45,6 +45,7 @@ export const WordInput = ({ onAddWord }: WordInputProps) => {
         });
       }
     } catch (error) {
+      console.error("Error verifying word:", error);
       setAlert({
         type: "error",
         message:
