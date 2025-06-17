@@ -18,6 +18,7 @@ export const useDictionaryAPI = () => {
         exists: data.length > 0
       };
     } catch (error) {
+        console.error("Error verifying word:", error);
       return {
         exists: false,
         error: 'Desculpe, ocorreu um erro ao verificar a palavra. Tente novamente.'
