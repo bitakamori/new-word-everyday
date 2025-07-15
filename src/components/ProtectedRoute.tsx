@@ -1,22 +1,26 @@
 "use client";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 import { useAuth } from "../contexts/AuthContext";
+import { useRouter } from "next/navigation";
 
-export default function Home() {
+interface ProtectedRouteProps {
+  children: React.ReactNode;
+  redirectTo?: string;
+}
+
+export default function ProtectedRoute({
+  children,
+  redirectTo = "/login",
+}: ProtectedRouteProps) {
   const { isAuthenticated, isLoading } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
-    if (!isLoading) {
-      if (isAuthenticated) {
-        router.push("/dashboard");
-      } else {
-        router.push("/login");
-      }
+    if (!isLoading && !isAuthenticated) {
+      router.push(redirectTo);
     }
-  }, [isAuthenticated, isLoading, router]);
+  }, [isAuthenticated, isLoading, router, redirectTo]);
 
   if (isLoading) {
     return (
@@ -48,5 +52,9 @@ export default function Home() {
     );
   }
 
-  return null;
+  if (!isAuthenticated) {
+    return null; // O redirecionamento já foi feito
+  }
+
+  return <>{children}</>;
 }
