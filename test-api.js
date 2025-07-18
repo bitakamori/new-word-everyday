@@ -1,9 +1,5 @@
 // Script para testar a configuração da API
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  (process.env.NODE_ENV === "production"
-    ? "https://new-word-everyday-backend.fly.dev"
-    : "http://localhost:3001");
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 console.log("Environment:", process.env.NODE_ENV);
 console.log("API_BASE_URL:", API_BASE_URL);
