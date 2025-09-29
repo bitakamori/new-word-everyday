@@ -1,4 +1,4 @@
-# 🎮 New Word Everyday Game - Frontend
+# 🎮 New Word Everyday Game - Frontend (atualmente com alguns problemas no back que ja estao sendo resolvidos)
 
 Frontend em Next.js para o jogo de palavras, conectado ao backend NestJS.
 
